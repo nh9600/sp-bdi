@@ -48,4 +48,9 @@ public class UserServiceImpl implements UserService {
 		return userDAO.selectUserInfo(user);
 	}
 
+	@Override
+	public UserVO login(UserVO user) {
+		return userDAO.selectUser(user);
+	}
+
 }

@@ -41,6 +41,7 @@
 				</th>
 			</tr>
 		</table>
+		<input type="hidden" id="num" value="${param.uiNum}">
 		<script>
 			var user;
 			window.onload = function() {
@@ -70,13 +71,12 @@
 				for (var i = 0; i < res.length; i++) {
 					var td = res[i];
 					var id = td.getAttribute('data-id');
-					console.log(id);
 					td.innerHTML = '<input type="text" id="' + id + '" value="'+ user[id]+'">';
 					
 				}
 
 			}
-			function updateUser() {
+			function updateUser(uiNum) {
 				var xhr = new XMLHttpRequest();
 				xhr.open('PUT', '/user/list/ajax');
 				xhr.setRequestHeader('Content-Type', 'application/json');
@@ -92,7 +92,7 @@
 					}
 				}
 				var user = {
-					uiNum : document.querySelector('#uiNum').value,
+					uiNum : document.querySelector('#num').value,
 					uiName : document.querySelector('#uiName').value,
 					uiId : document.querySelector('#uiId').value,
 					uiPwd : document.querySelector('#uiPwd').value

@@ -10,5 +10,6 @@ public interface UserDAO {
 	public int insertUserInfo(UserVO user);
 	public int updateUserInfo(UserVO user);
 	public int deleteUserInfo(UserVO user);
+	public UserVO selectUser(UserVO user);
 
 }

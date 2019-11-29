@@ -18,15 +18,16 @@
 		order by ui_num desc
 	</select>
 
-	<select id="selectUserInfo" parameterType="user" resultType="user">
-		select * from user_info	
+	<select id="selectUserInfo" parameterType="user"
+		resultType="user">
+		select * from user_info
 		<where>
-		<if test="uiNum != null">
-		and ui_num = #{uiNum}
-		</if>
+			<if test="uiNum != null">
+				and ui_num = #{uiNum}
+			</if>
 		</where>
 	</select>
-	
+
 	<insert id="insertUserInfo" parameterType="user">
 		insert into
 		user_info(ui_num,ui_id,ui_pwd,ui_name,credat,cretim,moddat,modtim)
@@ -38,7 +39,7 @@
 		<set>
 			<if test="uiId != null">
 				,ui_id = #{uiId}
-			</if> 
+			</if>
 			<if test="uiPwd != null">
 				,ui_pwd = #{uiPwd}
 			</if>
@@ -53,4 +54,20 @@
 		where
 		ui_num = #{uiNum}
 	</delete>
+
+	<select id="selectUser" resultType="user">
+		select * from
+		user_info
+		<where>
+			<if test="uiId != null">
+				and ui_id = #{uiId}
+			</if>
+			<if test="uiPwd != null">
+				and ui_pwd = #{uiPwd}
+			</if>
+			<if test="uiNum != null">
+				and ui_num = #{uiNum}
+			</if>
+		</where>
+	</select>
 </mapper>

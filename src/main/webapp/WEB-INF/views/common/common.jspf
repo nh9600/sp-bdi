@@ -2,5 +2,6 @@
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="cssPath" value="${pageContext.request.contextPath}/bt/css"/>
-<c:set var="jsPath" value="${pageContext.request.contextPath}/bt/js"/>
+<c:set var="codePath" value="${pageContext.request.contextPath}/res/codebase"></c:set>
+<c:set var="ver" value="0.0.0"></c:set>
+<c:set var="test" value="11"/>

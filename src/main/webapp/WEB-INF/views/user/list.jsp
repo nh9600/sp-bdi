@@ -16,14 +16,14 @@
 <body>
 	<div class="container">
 		<H1>User List</H1>
-		<dit class="search"> <label for="uiName">이름</label> <input
-			type="checkbox" name="search" value="ui_name" id="uiName"> </dit>
+		<div class="search"> <label for="uiName">이름</label> <input
+			type="checkbox" name="search" value="ui_name" id="uiName"> </div>
 		<label for="uiId">ID</label> <input type="checkbox" name="search"
 			value="ui_id" id="uiId"> <label for="uiNum">번호</label> <input
 			type="checkbox" name="search" value="ui_num" id="uiNum"> <input
 			type="text" id="searchStr">
 		<button>검색</button>
-		</dit>
+		</div>
 		<table class="table table-bordered">
 			<tr>
 				<th>번호</th>

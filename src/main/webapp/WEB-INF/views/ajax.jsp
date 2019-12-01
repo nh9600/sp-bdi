@@ -7,70 +7,47 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<input type="text" id="searchStr">
 	<button>GET</button>
-	<button>POST JSON</button>
-	<button>POST Param</button>
+	<button>POSET JSON</button>
+	<button>DELETE JSON</button>
+	<div id="rDiv"></div>
 	<script>
 		var ajax = function(conf) {
 			var xhr = new XMLHttpRequest();
 			xhr.open(conf.method, conf.url);
-			if(conf.method=='POST'){
-				xhr.setRequestHeader('Content-Type','application/json');
+			if (conf.method != 'GET') {
+				xhr.setRequestHeader('Content-Type', 'application/json');
 			}
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState == 4) {
 					if (xhr.status == 200) {
-						conf.callback(xhr.responseText);
+						conf.callback(xhr.responserText);
 					}
 				}
 			}
 			xhr.send(conf.data);
 		}
-		window.onload = function() {
+		
+		window.onload = function(){
 			var btns = document.querySelectorAll('button');
-			for (var i = 0; i < btns.length; i++) {
+			for(var i=0;i<btns.length;i++){
 				var btn = btns[i];
-				if (btn.innerText == 'GET') {
-					btn.onclick = function() {
+				if(btn.innerText == 'GET'){
+					btn.onclick = function(){
 						ajax({
-							method : 'GET',
-							url : '/ajax?a=1&b=2',
-							callback : function(res) {
-								res = JSON.parse(res);
-								alert(res.greeting);
+							method:'GET',
+							url:'/ajax?searchName='+ document.querySelector('searchStr'),
+							callback : function(res){
+								res.JSON.parse(res)
+								var html='<ul>';
+								for(var i=0;i<res.length;i++){
+									html+='<li>'+ res[i] + '</li>';
+								}
+								html+='<ul>';
 							}
-						});
-					}
-				} else if (btn.innerText == 'POST JSON') {
-					btn.onclick = function() {
-						var param = {
-								a:1,
-								b:2
-						}
-						ajax({
-							method : 'POST',
-							url : '/ajax/json',
-							callback : function(res) {
-								res = JSON.parse(res);
-								alert(res.greeting);
-							},
-							data : JSON.stringify(param)
-						});
-					}
-				} else {
-					btn.onclick = function() {
-						var fd = new FormData();
-						fd.append('a', 1);
-						fd.append('b', 2);
-						ajax({
-							method : 'POST',
-							url : '/ajax',
-							callback : function(res) {
-								res = JSON.parse(res);
-								alert(res.greeting);
-							},
-							data : fd
-						});
+						}),
+						document.querySelect('rDiv').innerHTML = html;
 					}
 				}
 			}

@@ -1,7 +1,10 @@
 package com.sp.bdi.user;
 
+import org.apache.ibatis.type.Alias;
+
 import lombok.Data;
 
+@Alias("user")
 @Data
 public class UserVO {
 	private String uiName;

@@ -12,7 +12,11 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.sp.bdi">
-		<level value="info" />
+		<level value="debug" />
+	</logger>
+	<logger name="jdbc.sqlonly"additivity="fasle">
+		<level value="debug"></level>
+		<appender-ref ref="console" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->

@@ -30,7 +30,7 @@ public class UserDAOImpl implements UserDAO {
 	public List<UserVO> selectUserVOList(UserVO user) {
 		SqlSession ss = ssf.openSession();
 		try {
-			return ss.selectList("com.sp.bdi.dao.UserInfoMapper.selectUserInfoList", user);
+			return ss.selectOne("com.sp.bdi.dao.UserInfoMapper.selectUserInfoList", user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
